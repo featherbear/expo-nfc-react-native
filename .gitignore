@@ -1,7 +1,7 @@
 node_modules/**/*
 ios/Pods
 ios/build
-.idea
-*/.idea
-*/.gradle
+.idea/
+.gradle/
 android/app/build
+android/local.properties
