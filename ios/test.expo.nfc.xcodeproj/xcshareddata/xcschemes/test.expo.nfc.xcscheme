@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B56386401DB9693800A0598C"
-               BuildableName = "expoblank.app"
-               BlueprintName = "expoblank"
-               ReferencedContainer = "container:expoblank.xcodeproj">
+               BuildableName = "test.expo.nfc.app"
+               BlueprintName = "test.expo.nfc"
+               ReferencedContainer = "container:test.expo.nfc.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,9 +34,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B56386401DB9693800A0598C"
-            BuildableName = "expoblank.app"
-            BlueprintName = "expoblank"
-            ReferencedContainer = "container:expoblank.xcodeproj">
+            BuildableName = "test.expo.nfc.app"
+            BlueprintName = "test.expo.nfc"
+            ReferencedContainer = "container:test.expo.nfc.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -58,9 +58,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B56386401DB9693800A0598C"
-            BuildableName = "expoblank.app"
-            BlueprintName = "expoblank"
-            ReferencedContainer = "container:expoblank.xcodeproj">
+            BuildableName = "test.expo.nfc.app"
+            BlueprintName = "test.expo.nfc"
+            ReferencedContainer = "container:test.expo.nfc.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
@@ -84,9 +84,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B56386401DB9693800A0598C"
-            BuildableName = "expoblank.app"
-            BlueprintName = "expoblank"
-            ReferencedContainer = "container:expoblank.xcodeproj">
+            BuildableName = "test.expo.nfc.app"
+            BlueprintName = "test.expo.nfc"
+            ReferencedContainer = "container:test.expo.nfc.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

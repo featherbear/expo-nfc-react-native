@@ -12,7 +12,7 @@ import host.exp.exponent.Constants;
 public class AppConstants {
 
   public static final String VERSION_NAME = "2.11.4";
-  public static String INITIAL_URL = "exp://exp.host/@bitcs/exop-blank";
+  public static String INITIAL_URL = "exp://exp.host/@bitcs/nfc";
   public static final String SHELL_APP_SCHEME = "exp5a9e8e27c6444abebcda9249f5f0fd44";
   public static final String RELEASE_CHANNEL = "default";
   public static boolean SHOW_LOADING_VIEW_IN_SHELL_APP = true;

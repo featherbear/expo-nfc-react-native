@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "expoblank",
-    "slug": "exop-blank",
+    "name": "test.expo.nfc",
+    "slug": "nfc",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [

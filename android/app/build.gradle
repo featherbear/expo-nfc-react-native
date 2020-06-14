@@ -29,7 +29,7 @@ android {
   }
 
   defaultConfig {
-    applicationId 'com.expoblank'
+    applicationId 'com.test.expo.nfc'
     minSdkVersion safeExtGet("minSdkVersion", 21)
     targetSdkVersion safeExtGet("targetSdkVersion", 28)
     versionCode 1

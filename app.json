@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "expoblank",
-    "slug": "exop-blank",
+    "name": "test.expo.nfc",
+    "slug": "nfc",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [
@@ -25,9 +25,9 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "expoblank",
-      "publishBundlePath": "ios/expoblank/Supporting/shell-app.bundle",
-      "publishManifestPath": "ios/expoblank/Supporting/shell-app-manifest.json"
+      "bundleIdentifier": "test.expo.nfc",
+      "publishBundlePath": "ios/test.expo.nfc/Supporting/shell-app.bundle",
+      "publishManifestPath": "ios/test.expo.nfc/Supporting/shell-app-manifest.json"
     },
     "isDetached": true,
     "detach": {
@@ -36,7 +36,7 @@
     },
     "scheme": "exp5a9e8e27c6444abebcda9249f5f0fd44",
     "android": {
-      "package": "com.expoblank",
+      "package": "com.test.expo.nfc",
       "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
       "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
     }

@@ -7,7 +7,7 @@
 	<key>isShell</key>
 	<true/>
 	<key>manifestUrl</key>
-	<string>exp://exp.host/@bitcs/exop-blank</string>
+	<string>exp://exp.host/@bitcs/nfc</string>
 	<key>releaseChannel</key>
 	<string>default</string>
 </dict>

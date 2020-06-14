@@ -15,7 +15,7 @@ public class MainActivity extends DetachActivity {
 
   @Override
   public String publishedUrl() {
-    return "exp://exp.host/@bitcs/exop-blank";
+    return "exp://exp.host/@bitcs/nfc";
   }
 
   @Override
