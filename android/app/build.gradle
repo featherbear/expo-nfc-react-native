@@ -104,6 +104,7 @@ apply from: 'expo.gradle'
 apply from: "../../node_modules/react-native-unimodules/gradle.groovy"
 
 dependencies {
+    implementation project(':react-native-nfc-manager')
     implementation project(':react-native-device-info')
   implementation fileTree(dir: 'libs', include: ['*.jar'])
 

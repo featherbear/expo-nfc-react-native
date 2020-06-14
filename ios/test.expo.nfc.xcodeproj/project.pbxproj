@@ -19,6 +19,7 @@
 		B5DB04801F3A684600E91581 /* shell-app-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = B5DB047E1F3A684600E91581 /* shell-app-manifest.json */; };
 		B5DB04811F3A684600E91581 /* shell-app.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B5DB047F1F3A684600E91581 /* shell-app.bundle */; };
 		EBB8117C1BFA0514F79CAF74 /* libPods-test.expo.nfc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4A88D15726AD99E8A257BC7 /* libPods-test.expo.nfc.a */; };
+		C63C520A2A754322833BAF41 /* libNfcManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C994C96B840F4E95A4DB6E79 /* libNfcManager.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,8 @@
 		B5DB047E1F3A684600E91581 /* shell-app-manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "shell-app-manifest.json"; sourceTree = "<group>"; };
 		B5DB047F1F3A684600E91581 /* shell-app.bundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "shell-app.bundle"; sourceTree = "<group>"; };
 		C4A88D15726AD99E8A257BC7 /* libPods-test.expo.nfc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-test.expo.nfc.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FA5641A55744682B4578E72 /* NfcManager.xcodeproj */ = {isa = PBXFileReference; name = "NfcManager.xcodeproj"; path = "../node_modules/react-native-nfc-manager/ios/NfcManager.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		C994C96B840F4E95A4DB6E79 /* libNfcManager.a */ = {isa = PBXFileReference; name = "libNfcManager.a"; path = "libNfcManager.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +50,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBB8117C1BFA0514F79CAF74 /* libPods-test.expo.nfc.a in Frameworks */,
+				C63C520A2A754322833BAF41 /* libNfcManager.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +81,7 @@
 				B56386421DB9693800A0598C /* Products */,
 				5B29BC350A332C58878A9F13 /* Pods */,
 				1A42804E64B7E9E0AB8B6799 /* Frameworks */,
+				B8BA25934DC74DDA9261F87B /* Libraries */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,6 +121,15 @@
 			path = Supporting;
 			sourceTree = "<group>";
 		};
+		B8BA25934DC74DDA9261F87B /* Libraries */ = {
+			isa = "PBXGroup";
+			children = (
+				7FA5641A55744682B4578E72 /* NfcManager.xcodeproj */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+			path = "";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,7 +160,7 @@
 		B56386391DB9693800A0598C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 900;
 				ORGANIZATIONNAME = "650 Industries, Inc.";
 				TargetAttributes = {
 					B56386401DB9693800A0598C = {
@@ -398,6 +412,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = test.expo.nfc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 			};
 			name = Debug;
 		};
@@ -412,6 +430,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = test.expo.nfc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 			};
 			name = Release;
 		};
