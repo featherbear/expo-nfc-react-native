@@ -5,3 +5,5 @@ ios/build
 .gradle/
 android/app/build
 android/local.properties
+/app.json
+
