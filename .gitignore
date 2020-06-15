@@ -1,9 +1,12 @@
 node_modules/**/*
-ios/Pods
-ios/build
+/ios/Pods/
+/ios/build/
 .idea/
 .gradle/
-android/app/build
-android/local.properties
+/android/app/build/
+/android/app/release/
+/android/build/
+/android/local.properties
+
 /app.json
 
