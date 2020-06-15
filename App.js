@@ -1,100 +1,63 @@
 import React from 'react'
-import { Video } from 'expo-av'
 import {
-  Dimensions,
   StyleSheet,
   Text,
-  TouchableHighlight,
-  TouchableOpacity,
   View
 } from 'react-native'
 import Modal from 'expo-modal'
-import NfcManager, { ByteParser, NfcTech } from 'react-native-nfc-manager'
-import DeviceInfo from 'react-native-device-info'
-
-const { height, width } = Dimensions.get('window')
+import MFC, { ByteParser } from 'react-native-mifare-classic-wrapper'
 
 export default class App extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      nfcEnabled: false,
-      tag: null
+      nfcError: 'Please wait...',
+      tag: null,
+      data: null
     }
   }
 
   componentDidMount () {
-    NfcManager.isSupported(NfcTech.MifareClassic).then(r => {
-      if (!r) return
-      // NfcManager.onStateChanged(
+    const tagFound = async (tag) => {
+      await tag.readBlock(48, {
+        sector: 12,
+        key: [0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF],
+        keyType: 'A'
+      }).then(d => {
+        this.setState({ tag: tag.id, data: ByteParser.byteToString(d) })
+      })
+    }
 
-      NfcManager.start()
-        .then(() => NfcManager.isEnabled())
-        .then(nfcEnabled => {
-          this.setState({ nfcEnabled })
+    MFC.start().then(() => MFC.listen(tagFound))
+      .then(this.setState({ nfcError: null }))
+      .catch(e => this.setState({ nfcError: e.message }))
 
-          if (!nfcEnabled) {
-            console.warn('NFC disabled!')
-            return
-          }
-
-          console.log('Started')
-          const listen = () => {
-            NfcManager.registerTagEvent()
-              .then(() => NfcManager.requestTechnology(NfcTech.MifareClassic))
-              .then(() => NfcManager.getTag())
-              .then(tag => {
-                this.setState({ tag })
-                console.log(tag)
-              })
-              .finally(() => {
-                NfcManager.cancelTechnologyRequest()
-                listen()
-              })
-          }
-
-          listen()
+    MFC.onStateChanged(({ state }) => {
+      if (state === 'on') {
+        this.setState({ nfcError: this.state.oldNfcError, tag: null, data: null })
+      } else if (state === 'off') {
+        this.setState({
+          oldNfcError: this.state.nfcError,
+          nfcError: 'NFC Disabled!'
         })
+      }
     })
   }
 
   render () {
-    const innerComponent = (
-      <View
-        style={{
-          height: height / 2,
-          width: width / 2,
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}
-      >
-        <Text>Hello world</Text>
-        <TouchableOpacity onPress={() => Modal.dismissModal()}>
-          <Text>close modal</Text>
-        </TouchableOpacity>
+    const nfcError = () => <Text>{this.state.nfcError}</Text>
+    const noTag = () => <Text> Approach a Mifare Classic Tag </Text>
+    const tagDetected = () => (
+      <View>
+        <Text>ID: {this.state.tag}</Text>
+        <Text>Data: {this.state.data}</Text>
       </View>
     )
 
     return Modal.wrapIntoModal(
       <View style={styles.container}>
-        <Text>{DeviceInfo.getBrand()}</Text>
-        {/* <Video
-          source={{
-            uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-          }}
-          shouldPlay
-          resizeMode='cover'
-          style={styles.videoPlayer}
-        /> */}
-        <TouchableHighlight
-          onPress={() => {
-            Modal.showModal(innerComponent)
-          }}
-        >
-          <Text> Touch Here </Text>
-        </TouchableHighlight>
-      </View>,
-      styles.modalStyle
+        {this.state.nfcError ? nfcError() : ((this.state.tag && this.state.data) ? tagDetected : noTag)()}
+      </View>
     )
   }
 }
@@ -105,13 +68,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center'
-  },
-  videoPlayer: {
-    position: 'relative',
-    width: '100%',
-    aspectRatio: 3 / 2
-  },
-  modalStyle: {
-    backgroundColor: 'rgba(1,1,56,0.3)'
   }
 })
