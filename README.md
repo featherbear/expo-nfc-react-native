@@ -1,127 +1,54 @@
-# Expo starter kit
+Using Expo with react-native-nfc-manager
+---
 
-#### A blazing fast ejecting tool and scaffolder, for react-native and expo
+[react-native-nfc-manager]: https://github.com/whitedogg13/react-native-nfc-manager
+[Expo]: https://expo.io/
 
-Watch this [expo starter kit](https://youtu.be/Yscc0j6t35E)
+> This repository features how to use [react-native-nfc-manager] whilst also maintaining the ability to develop with the [Expo] framework.
 
-Watch this video that walks through the setup in MAC OS [expo starter kit](https://youtu.be/SMXEfinQTK4)
+* The code has been adapted from this [article](https://codersera.com/blog/running-expo-react-native-together/)
+* This project uses a [custom wrapper](https://github.com/featherbear/react-native-mifare-classic-wrapper) over the [react-native-nfc-manager] library, however usage is the same.
 
-***Overview***
+# General Overview
 
-Expo-starter-kit is a powerful, minimal configuration scaffolding tool, which provides a basic configuration for ejected apps built 
-with expo, saving the developers from the hassle of manually ejecting apps. expo-starter-kit exposes an easy-to-use scripts' 
-list for handling builds, running an app in ejected as well as in unejected mode.
+[Expo] is a framework for React Native which provides a set of tools and services to allow us to develop React Native applications. Unfortunately, it does support third-party React Native Modules, meaning that you would have to forego using [Expo] if you want to use these third-party modules... usually.
 
-***Features***
+The `create-expo-native-app` npx template provides a set of scripts that allow us to use both React Native Modules and [Expo] at the same time! By creating stubs/mocks, we can make the Babel transpiler use different pieces of code depending on whether the application is running in Native mode, or with Expo.  
 
-1. Minimal configuration
-2. Blazing fast development
-3. Rich script structure to run the app in ejected or unjected mode, with the help of just one command
-4. Do whatever you want in the Xcode and Android Studio projects
-5. Support for third-party native modules for React Native, non-Expo-specific instructions such as react-native link  
-6. distribute your app as an ipa or apk without pain
+When running on Expo mode, these stubs/mocks will emulate the behaviour of the React Native Module.  
+When running on Native mode, the actual React Native Module will be used.  
 
-***Why should you eject your app ?***
+# Installation and Development
 
-"Ejecting" is the process of setting up your own custom builds for your CRNA app. It can be necessary to do if you have needs that 
-aren't covered by CRNA or expo. Apps built with React-native are written in javascript, offering a bridge between writing old school
-platform specific apps using kotlin, swift etc. And this is the speciality offered by react-native and expo, which makes them blazing
-fast and powerful to use.
+> These instructions are for the Android environment. For iOS, please look at the original [article](https://codersera.com/blog/running-expo-react-native-together/).
 
-However, there are some cases where advanced developers need native capabilities outside of what Expo offers out-of-the-box. 
-The most common situation is when a project requires a specific Native Module which is not supported by React Native Core or the Expo 
-SDK.
+When running in native / "ejected mode", the platform-specific builds will need to be installed (i.e. X Code and/or Android Studio). For Android, this means we will have to set up `adb`, `gradle`, etc...
 
-You might want to eject in the following cases:-
-1. If you do need to eject to build your own distribution package or to include your own native code
-2. If you wish to distribute your app to coworkers, friends, or customers.Right now you can do so by either making use 
-   of a service to host or build your CRNA app or by ejecting.
-3. If you wish to use a functionality that comes from interfacing directly with mobile platform APIs via Java, Objective-C, Swift, C,
-   etc. As of right now, the only way to get direct access to these APIs from your app is by "ejecting" from CRNA and building the 
-   native code yourself.
+Adding in new libraries would require you to rebuild the application in Android Studio, and deploy them onto your device / emulated device. Actual application development is however is still performed as usual (Metro bundler)
 
+> The following instructions are based off a newly created `create-expo-native-app` template.
 
-***Motivation***
+## Set up the Android environment
 
-When building large, complex native apps using technologies like react-native or ionic, a programmer eventually feels the need of 
-ejecting  the application due to the reasons  mentioned above and it is a universal truth that ejecting is a painful process. 
-Also, there might be some cases when a customer might force the programmer to use a native library, which expo or react-native might
-not offer out-of-the-box.These integrations require the use of ``react-native link`` which can only function in ejected version of the app.
-Therefore, this module is made as a headstart for running your app in ejected or unjejected mode using simple , and easy to use 
-commands. 
+* Delete `android/local.properties`
+* Git ignore `android/local.properties`
+* `npm install`
+* `npm run init`
+* Remove `app.json` from the git index
+* `cd android && ./gradlew installDebug`
+* _Open the `android` folder in Android Studio_
+* _Check that `npm run android-native` works_
+* _Check that `npm run android-expo` works_
 
-***Getting Started***
+## Install the native NFC module
 
-***Running the app on an iOS emulator***
+* `npm install featherbear/react-native-mifare-classic-wrapper`
+* `react-native link react-native-nfc-manager`
+* `npm install jetifier`
+* `npx jetifier`
+* Enable Jetifier and AndroidX in `android/gradle.properties`
+* _Rebuild the application in Android Studio_
 
-1. Clone this repository
- ```
-git clone https://github.com/codersera-repo/expo-native-starter-kit.git 
-```
-2. Install the dependencies
- ```
- npm install
- ```
+## Stub/Mock File
 
-**Installation**
-
-1. run the init script to specify your application name. It's gonna prompt you for your app name  and a slug name
- ```
-npm run init
- ```
-2. Install the bundler dependency through gem
- ```
- gem install bundler
- ```
-3. Install the required native dependency files
- ```
- npm run install-ios-libs
- ```
- 4. Run the app
- ```
- react-native run-ios
- ```
- 5. Start the application in ejected mode
- ```
- npm run ios-native
- ```
- 6. Start the app in unejected version
- ```
- npm run ios-expo
- ```
- 
- ***Running the app in android devices***
- 
- perform steps 1 and 2 , the same as mentioned above for iOS devices
-
-**Installation**
-
-1. run the init script to specify your application name. It's gonna prompt you for your app name  and a slug name
- ```
-npm run init
- ```
-2. Run this gradlew command to build and sync your app manually
- ```
-cd android && ./gradlew installDebug
- ```
-3. Open the android folder of your app in Android Studio. 
-
-4. Hit the ``Run`` button 
-
-5. Start the application in ejected mode
- ```
- npm run android-native
- ```
-6. Start the app in unejected version
- ```
- npm run android-expo
- ```
- 
- ***Running the app in web browser***
-
- 1. Start the app in web
-  ```
-  npm run web-expo
-  ```
-
-
+* TODO!
