@@ -38,7 +38,7 @@
     "android": {
       "package": "com.test.expo.nfc",
       "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
-      "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
+      "publishManifestPath": "android/app/src/main/assets/kernel-manifest.json"
     }
   }
 }

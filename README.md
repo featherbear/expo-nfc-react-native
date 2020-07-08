@@ -34,3 +34,10 @@ A stub version can be written to emulate/handle a native module's functionality.
 Whilst native modules won't work in Expo, you will still be able to develop your application using Expo; with emulated module functionality.
 
 Have a look at the `stubs/MifareClassicWrapperStub.js` and `babel.config.js` file for an example of how to set this up.
+
+## Deployment
+
+You can deploy the application via the CLI or via Android Studio.  
+
+Prior to deploying, please run `npm run android-native` to update the configuration files.  
+Deployed APKs can be found in `android/app/release/`

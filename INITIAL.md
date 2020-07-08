@@ -42,3 +42,19 @@ I ran these commands to get the native NFC module working
 * `npx jetifier` - Let Jetifier do its magic
 * Enable Jetifier and AndroidX in `android/gradle.properties`
 * _Rebuild the application in Android Studio_
+
+# Prepare the Deploy Environment
+
+To prepare for deployment of your code as an APK file, you will need to change a line in the `ejected.json` file.
+
+Around line 41 you should see the following
+
+```
+"publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
+```
+
+Change this to
+
+```
+"publishManifestPath": "android/app/src/main/assets/kernel-manifest.json"
+```
