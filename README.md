@@ -13,42 +13,24 @@ Using Expo with react-native-nfc-manager
 
 [Expo] is a framework for React Native which provides a set of tools and services to allow us to develop React Native applications. Unfortunately, it does support third-party React Native Modules, meaning that you would have to forego using [Expo] if you want to use these third-party modules... usually.
 
-The `create-expo-native-app` npx template provides a set of scripts that allow us to use both React Native Modules and [Expo] at the same time! By creating stubs/mocks, we can make the Babel transpiler use different pieces of code depending on whether the application is running in Native mode, or with Expo.  
+The `create-expo-native-app` npx template provides a set of scripts that allow us to use both React Native Modules and [Expo] at the same time! By creating stub files, we can make the Babel transpiler use different pieces of code depending on whether the application is running in Native mode, or with Expo.  
 
-When running on Expo mode, these stubs/mocks will emulate the behaviour of the React Native Module.  
+When running on Expo mode, these stubs will emulate the behaviour of the React Native Module.  
 When running on Native mode, the actual React Native Module will be used.  
 
-# Installation and Development
+# Getting Started
 
-> These instructions are for the Android environment. For iOS, please look at the original [article](https://codersera.com/blog/running-expo-react-native-together/).
+You can have a look at the documented steps that I made [here](./INITIAL.md)
+
+This repository was developed with the Android environment in mind. For iOS, please look at the original [article](https://codersera.com/blog/running-expo-react-native-together/).
 
 When running in native / "ejected mode", the platform-specific builds will need to be installed (i.e. X Code and/or Android Studio). For Android, this means we will have to set up `adb`, `gradle`, etc...
 
-Adding in new libraries would require you to rebuild the application in Android Studio, and deploy them onto your device / emulated device. Actual application development is however is still performed as usual (Metro bundler)
+Adding in new libraries would require you to rebuild the application in Android Studio, and deploy them onto your device / emulated device. Actual application development (your React code) is however is still performed as usual (automatic packaging with the Metro bundler)
 
-> The following instructions are based off a newly created `create-expo-native-app` template.
+## Stub File
 
-## Set up the Android environment
+A stub version can be written to emulate/handle a native module's functionality.  
+Whilst native modules won't work in Expo, you will still be able to develop your application using Expo; with emulated module functionality.
 
-* Delete `android/local.properties`
-* Git ignore `android/local.properties`
-* `npm install`
-* `npm run init`
-* Remove `app.json` from the git index
-* `cd android && ./gradlew installDebug`
-* _Open the `android` folder in Android Studio_
-* _Check that `npm run android-native` works_
-* _Check that `npm run android-expo` works_
-
-## Install the native NFC module
-
-* `npm install featherbear/react-native-mifare-classic-wrapper`
-* `react-native link react-native-nfc-manager`
-* `npm install jetifier`
-* `npx jetifier`
-* Enable Jetifier and AndroidX in `android/gradle.properties`
-* _Rebuild the application in Android Studio_
-
-## Stub/Mock File
-
-* TODO!
+Have a look at the `stubs/MifareClassicWrapperStub.js` and `babel.config.js` file for an example of how to set this up.
