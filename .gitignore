@@ -7,6 +7,6 @@ node_modules/**/*
 /android/app/release/
 /android/build/
 /android/local.properties
-
 /app.json
-
+/config.json
+/.expo/packager-info.json
